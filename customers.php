@@ -35,7 +35,7 @@ $(document).ready(function(){
 		if($query) {
 			if(mysqli_num_rows($query)>0){
 				while($row = mysqli_fetch_array($query)) {
-				echo "<tr><td>".$row["name"]."</td><td>".$row["address"].
+				echo "<tr><td contenteditable="true">".$row["name"]."</td><td>".$row["address"].
 					"</td><td>".$row["contact"]."</td></tr>";
 				}
 				echo "</table>";
