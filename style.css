@@ -51,7 +51,7 @@ button:hover {
     opacity: 0.8;
 }
 
-table{
+table #customer{
     border-collapse: collapse;
     width: 100%;
     color: #000000;
@@ -59,8 +59,25 @@ table{
     text-align: left;
 }
 
-th {
+#customer tr {
+    background-color: #eee;
+    border-top: 1px solid #fff;
+}
+
+#customer tr:hover {
+    background-color: #ccc;
+}
+
+#customer th {
     background-color: #ffffff;
 }
+
+#customer th, #customer td {
+    padding: 3px 5px;
+}
+
+#customer td:hover{
+    cursor: pointer;
+}
 tr:nth-child(even) {background-color: #5edee0;}
-</style>
+</style>-
