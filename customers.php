@@ -15,20 +15,17 @@ include ('header.php');
 		<th>Name</th>
 		<th>Phone number</th>
 		<th>Address</th>
-		<th>Total purchased</th>
-		<th>Pending Return</th>
 	</tr>
 	<?php
-		$sql = "SELECT name, phone_num, address, no_purchase, pen_return from customer_t";
+		$sql = "SELECT name, address, contact from customer_t";
 
 		$query = mysqli_query($conn,$sql);
 
 		if($query) {
 			if(mysqli_num_rows($query)>0){
 				while($row = mysqli_fetch_array($query)) {
-				echo "<tr><td>".$row["name"]."</td><td>".$row["phone_num"].
-					"</td><td>".$row["address"]."</td><td>".$row["no_purchase"].
-					"</td><td>".$row["pen_return"]."</td></tr>";
+				echo "<tr><td>".$row["name"]."</td><td>".$row["address"].
+					"</td><td>".$row["contact"]."</td></tr>";
 				}
 				echo "</table>";
 			}
