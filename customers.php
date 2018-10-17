@@ -1,6 +1,17 @@
 <?php
 include ('connect.php');
 include ('header.php');
+
+$(document).ready(function(){
+
+	$('#customer tr').click(function(){
+		var href = $(this).find("a").attr("href");
+		if(href){
+			window.location = href;
+		}
+	});
+});	
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,7 +21,7 @@ include ('header.php');
 	<title>Customers</title>
 </head>
 <body>
-<table>
+<table id="customer">
 	<tr>
 		<th>Name</th>
 		<th>Phone number</th>
