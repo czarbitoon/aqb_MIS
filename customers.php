@@ -1,6 +1,19 @@
 <?php
 require 'connect.php';
 include ('header.php');
+
+?>
+<script>
+$(document).ready(function(){
+
+	$('#customer tr').click(function(){
+		var href = $(this).find("a").attr("href");
+		if(href){
+			window.location = href;
+		}
+	});
+});	
+</script>
 session_start();
 ?>
 
@@ -9,7 +22,8 @@ session_start();
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Customers</title>
+	<script src="jquery-3.3.1.js"></script>
+	<title>Customers Website</title>
 </head>
 <body>
 <table id="customer">
@@ -25,6 +39,10 @@ session_start();
 		if($query) {
 			if(mysqli_num_rows($query)>0){
 				while($row = mysqli_fetch_array($query)) {
+				echo "<tr><td contenteditable='true'>".$row["name"]."</td><td contenteditable='true'>".$row["address"].
+					"</td><td contenteditable='true'>".$row["contact"]."</td></tr>";
+				echo "<tr><td contenteditable='true'>".$row["name"]."</td><td>".$row["address"].
+					"</td><td>".$row["contact"]."</td></tr>";
 					$_SESSION["id"] = $row['id'];
 				echo '<tr>';
 				echo '<td>'.$row["name"].'</td>';
