@@ -29,7 +29,6 @@ session_start();
 			}
 		}
 	?>
-
 <div class="container">
 	<form method="POST" action="payment_action.php">
 		<label for="quantity"><b>Quantity</b></label>
