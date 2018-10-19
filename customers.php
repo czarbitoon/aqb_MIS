@@ -1,19 +1,6 @@
 <?php
 require 'connect.php';
 include ('header.php');
-
-?>
-<script>
-$(document).ready(function(){
-
-	$('#customer tr').click(function(){
-		var href = $(this).find("a").attr("href");
-		if(href){
-			window.location = href;
-		}
-	});
-});	
-</script>
 session_start();
 ?>
 
