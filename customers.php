@@ -20,7 +20,7 @@ $(document).ready(function(){
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<script src="jquery-3.3.1.js"></script>
-	<title>Customers</title>
+	<title>Customers Website</title>
 </head>
 <body>
 <table id="customer">
