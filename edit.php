@@ -3,21 +3,33 @@ require 'connect.php';
 include('header.php');
 session_start();
 
-if(isset($_POST['save']))
-{
-	$name = $_POST['name'];
-	$address = $_POST['address'];
-	$contact = $_POST['contact'];
-
-	$sql2 = "UPDATE customer_t SET name = '$name', 
-			address = '$address', contact = '$contact' WHERE id = $id";
-	$query = mysqli_query($conn,$sql2);
-	if(!($query = mysqli_query($conn,$sql2))){
-		echo "<script>alert('error')</script>";
+// $_SESSION['id'] = $_POST['']
+$sql = "SELECT * FROM customer_t where id ='" . $_SESSION["id"] . "'";
+$query = mysqli_query($conn,$sql);
+while($row = mysqli_fetch_array($query)){
+	if($_SESSION['id'] == $row['id']){
+	$_SESSION['name'] = $row['name'];
+	$_SESSION['address'] = $row['address'];
+	$_SESSION['contact'] = $row['contact'];
+	echo "</script>alert(" . $_SESSION['name'] .  " " . $_SESSION['address'] . " " .  $_SESSION['contact'] . ")</script>";
 	}
-	header("Location:edit.php");
-
 }
+
+// if(isset($_POST['save']))
+// {
+// 	$name = $_POST['name'];
+// 	$address = $_POST['address'];
+// 	$contact = $_POST['contact'];
+
+// 	$sql2 = "UPDATE customer_t SET name = '$name', 
+// 			address = '$address', contact = '$contact' WHERE id = $id";
+// 	$query = mysqli_query($conn,$sql2);
+// 	if(!($query = mysqli_query($conn,$sql2))){
+// 		echo "<script>alert('error')</script>";
+// 	}
+// 	header("Location:edit.php");
+
+// }
 
 ?>
 
@@ -28,18 +40,6 @@ if(isset($_POST['save']))
 	<title>EDIT</title>
 </head>
 <body>
-	<?php
-		$sql = "SELECT * customer_t where id ='" . $id . "'";
-		$query = mysqli_query($conn,$sql);
-		while($row = mysqli_fetch_array($query)){
-			if($_SESSION['id'] == $row['id']){
-			$_SESSION['name'] = $row['name'];
-			$_SESSION['address'] = $row['address'];
-			$_SESSION['contact'] = $row['contact'];
-			echo "</script>alert(" . $_SESSION['name'] .  " " . $_SESSION['address'] . " " .  $_SESSION['contact'] . ")</script>";
-			}
-		}
-	?>
 
 	<div class="container">
 	<form method="POST">
