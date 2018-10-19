@@ -1,10 +1,12 @@
 //universal variables
 var counter;
+var cust_id;
 
 
-function getData(id, name, contact){
+function getCustomers(id, name, contact){
 
-
+    var accid = id;
+    var onclick_text = "editData(this.value);";
 
 	var acc_id = document.createElement("td");
 	var textid = document.createTextNode(id);
@@ -22,14 +24,16 @@ function getData(id, name, contact){
     var edit_acc = document.createElement("td");
     var b_editnode = document.createElement("button");
     var b_textupdate = document.createTextNode("EDIT");
-    b_editnode.setAttribute("onclick","<?php $_SESSION['id'] = " + id + "; header('Location: edit.php'); ?>");
+    b_editnode.setAttribute("onclick", onclick_text);
+    b_editnode.setAttribute("value", id);
     b_editnode.appendChild(b_textupdate);
     edit_acc.appendChild(b_editnode);
 
     var delete_acc = document.createElement("td");
     var b_deletenode = document.createElement("button");
-    var b_textupdate = document.createTextNode("UPDATE");
-    b_deletenode.setAttribute("onclick","<?php $_SESSION['id'] = " + id + "; ?>");
+    var b_textupdate = document.createTextNode("DELETE");
+    b_deletenode.setAttribute("onclick",onclick_text);
+    b_deletenode.setAttribute("value", id);
     b_deletenode.appendChild(b_textupdate);
     delete_acc.appendChild(b_deletenode);
 
@@ -37,7 +41,8 @@ function getData(id, name, contact){
     var update_acc = document.createElement("td");
     var b_updatenode = document.createElement("button");
     var b_textupdate = document.createTextNode("UPDATE");
-    b_updatenode.setAttribute("onclick","<?php $_SESSION['id'] = " + id + "; ?>");
+    b_updatenode.setAttribute("onclick",onclick_text);
+    b_updatenode.setAttribute("value", id);
     b_updatenode.appendChild(b_textupdate);
     update_acc.appendChild(b_updatenode);
 
@@ -56,4 +61,11 @@ function getData(id, name, contact){
     //creating a counter incase naay arrays
     counter = counter + 1;
 
+}
+
+
+function editData(id){
+    cust_id = id;
+    alert(id);
+    window.location.href = "edit.php";
 }
