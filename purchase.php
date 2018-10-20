@@ -11,33 +11,15 @@ session_start();
 	<title>PURCHASE</title>
 </head>
 <body>
-	
-	<?php
-	echo $_SESSION["id"];
-		$sql = "SELECT * customer_t where id ='" . $_SESSION["id"] . "'";
-		$query = mysqli_query($conn,$sql);
-		if($query){
-			if(mysqli_num_rows($query) > 0){
-				while($row = mysqli_fetch_array($query)){
-					if($_SESSION['id'] == $row['id']){
-					$_SESSION['name'] = $row['name'];
-					$_SESSION['address'] = $row['address'];
-					$_SESSION['contact'] = $row['contact'];
-					echo "</script>alert(" . $_SESSION['name'] .  " " . $_SESSION['address'] . " " .  $_SESSION['contact'] . ")</script>";
-					}
-				}
-			}
-		}
-	?>
-
-<div class="container">
-	<form method="POST" action="payment_action.php">
-		<label for="quantity"><b>Quantity</b></label>
-		<input type="number" name="quantity" placeholder="quantity" required>
-		<label for="payment"><b>Payment</b></label>
-		<input type="number" name="payment" placeholder="payment" required>
-
-		<button type="submit" name="submit">Submit</button>
+	<div class="container">
+	<form method="POST"action="purchase_controller.php">
+		<p><label class="field" for="Number of Gallons"><b>Number of gallons</b></label>
+		<input type="number" placeholder="Number of Gallons" name="quantity" required></p>
+		<p><label class="field" for="Payment"><b>Amount</b></label>
+		<input type="number" placeholder="Amount" name="payment" required></p>
+		<p><label class="field" for="Remin"><b>No. of gallons returned</b></label>
+		<input type="number" placeholder="Quantity" default= name="remit" value="0"></p>
+		<p><button type="submit" name="submit">Submit</button></p>
 	</form>
 </div>
 

@@ -1,9 +1,8 @@
 <?php
 include('connect.php');
+session_start();
 
-$id = $_POST['id'];
-
-$sql = "DELETE FROM customer_t where id = $id";
+$sql = "DELETE FROM customer_t where id = '".$_SESSION['id']."'";
 $query = mysqli_query($conn,$sql);
 header("location:customers.php");
 ?>

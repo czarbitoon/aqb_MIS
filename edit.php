@@ -2,7 +2,6 @@
 require 'connect.php';
 session_start();
 
-// $_SESSION['id'] = $_POST['']
 $sql = "SELECT * FROM customer_t where id ='" . $_SESSION['id'] . "'";
 $query = mysqli_query($conn,$sql);
 if($query) {
@@ -15,28 +14,10 @@ if($query) {
 				echo "<script>alert(" . $_SESSION['name'] .  " " . $_SESSION['address'] . " " .  $_SESSION['contact'] . ")</script>";
 			}
 			else{
-
 			}
 		}
 	}
 }
-
-// if(isset($_POST['save']))
-// {
-// 	$name = $_POST['name'];
-// 	$address = $_POST['address'];
-// 	$contact = $_POST['contact'];
-
-// 	$sql2 = "UPDATE customer_t SET name = '$name', 
-// 			address = '$address', contact = '$contact' WHERE id = $id";
-// 	$query = mysqli_query($conn,$sql2);
-// 	if(!($query = mysqli_query($conn,$sql2))){
-// 		echo "<script>alert('error')</script>";
-// 	}
-// 	header("Location:edit.php");
-
-// }
-
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +30,7 @@ if($query) {
 <body>
 	<?php include('header.php'); ?>
 	<div class="container">
-	<form method="POST">
+	<form method="POST" action="edit_action.php">
 		<p><label class="field" for="name"><b>Full Name:</b></label>
 		<input type="text" placeholder="Full Name" name="name" value="<?php echo $_SESSION['name']; ?>" required></p>
 		<p><label class="field" for="address"><b>Address: </b></label>
